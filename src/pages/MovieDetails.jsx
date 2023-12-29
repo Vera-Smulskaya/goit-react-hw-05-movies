@@ -26,5 +26,22 @@ export default function MovieDetails() {
     fetchMovieDetails();
   }, [movieId]);
 
-  return <div>MovieDetails MovieId: {movieId}</div>;
+  return (
+    <div>
+      <h1>MovieDetails MovieId: {movieId}</h1>
+      {error !== null && <p>{error}</p>}
+      {isLoading && <Loader />}
+      {movieDetails !==
+        null(
+          <div>
+            <h2>{movieDetails.title}</h2>
+            <h3>{movieDetails.overview}</h3>
+            <h3>{movieDetails.genres}</h3>
+          </div>
+        )}
+      <div>
+        <p>Additional information</p>
+      </div>
+    </div>
+  );
 }
