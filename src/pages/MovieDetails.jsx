@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, Route, Routes, useParams } from 'react-router-dom';
+import axios from 'axios';
+import Loader from 'components/Loader/Loader';
+import MovieCast from './MovieCast';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
   const { movieDetails, setMovieDetails } = useState(null);
   const { isLoading, setIsLoading } = useState(null);
   const { error, setError } = useState(null);
-
-  const appKey = '7e63573e5f6a11223e01d9dfd6333e93';
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -41,6 +42,15 @@ export default function MovieDetails() {
         )}
       <div>
         <p>Additional information</p>
+        <NavLink className="" to="cast">
+          Cast
+        </NavLink>
+        <Routes>
+          <Route path="cast" element={<MovieCast />} />
+        </Routes>
+        <NavLink className="" to="reviews">
+          Reviews
+        </NavLink>
       </div>
     </div>
   );
