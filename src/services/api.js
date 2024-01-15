@@ -1,14 +1,46 @@
 import axios from 'axios';
 
 const KEY = '7e63573e5f6a11223e01d9dfd6333e93';
+const baseUrl = 'https://api.themoviedb.org/3/';
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+  },
+};
 
-export async function fetchMovies() {
-  const response = await axios(
-    'https://api.themoviedb.org/3/trending/movie/day?api_key=7e63573e5f6a11223e01d9dfd6333e93'
+export const fetchMoviesTrending = async () => {
+  const { data } = await axios.get(
+    `${baseUrl}trending/all/day?api_key=${KEY}`,
+    options
   );
-  if (response.status === 404) {
-    Notiflix.Notify.failure('Sorry, some error occured.');
-    return Promise.reject();
-  }
-  return response;
-}
+
+  return data.results;
+};
+
+export const fetchMovieDetails = async movieId => {
+  const { data } = await axios.get(
+    `${baseUrl}movie/${movieId}?api_key=${KEY}&language=en-US`,
+    options
+  );
+
+  return data;
+};
+
+export const fetchMovieCast = async movieId => {
+  const { data } = await axios.get(
+    `${baseUrl}movie/${movieId}/credits?api_key=${KEY}&include_adult=false&language=en-US`,
+    options
+  );
+
+  return data.cast;
+};
+
+export const fetchMovieReviews = async movieId => {
+  const { data } = await axios.get(
+    `${baseUrl}movie/${movieId}/reviews?api_key=${KEY}&include_adult=false&language=en-US`,
+    options
+  );
+
+  return data.results;
+};
