@@ -1,0 +1,9 @@
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.movieItem {
+  font-size: 36px;
+}

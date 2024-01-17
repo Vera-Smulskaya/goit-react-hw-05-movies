@@ -17,9 +17,6 @@ export default function MovieList({ movies }) {
                 key={movie.id}
               >
                 <li key={movie.id}>
-                  <h4 className={css.movieItem}>
-                    {movie.title ? movie.title : movie.name}
-                  </h4>
                   <img
                     className={css.movieImage}
                     alt={movie.title ? movie.title : movie.name}
@@ -30,6 +27,9 @@ export default function MovieList({ movies }) {
                         : 'no-image'
                     }
                   />
+                  <h4 className={css.movieItem}>
+                    {movie.title ? movie.title : movie.name}
+                  </h4>
                 </li>
               </NavLink>
             ))

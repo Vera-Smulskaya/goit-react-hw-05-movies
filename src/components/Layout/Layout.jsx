@@ -12,9 +12,6 @@ export default function Layout({ children }) {
         <NavLink className={css.navLink} to="/Movies">
           Movies
         </NavLink>
-        <NavLink className={css.navLink} to="/MovieDetails">
-          MovieDetails
-        </NavLink>
       </header>
       <main>{children}</main>
     </div>
