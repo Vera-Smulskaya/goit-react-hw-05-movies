@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, Route, Routes, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loader from 'components/Loader/Loader';
-import MovieCast from './MovieCast';
+import MovieCast from '../MovieCast';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
