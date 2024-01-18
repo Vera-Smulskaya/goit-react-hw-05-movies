@@ -27,7 +27,6 @@ export default function MovieList({ movies }) {
                         : 'no-image'
                     }
                   />
-                  <h3>{movie.title}</h3>
                 </li>
               </NavLink>
             ))
