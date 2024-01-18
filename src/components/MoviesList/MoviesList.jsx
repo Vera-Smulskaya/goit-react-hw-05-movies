@@ -19,17 +19,15 @@ export default function MovieList({ movies }) {
                 <li key={movie.id}>
                   <img
                     className={css.movieImage}
-                    alt={movie.title ? movie.title : movie.name}
-                    title={movie.title ? movie.title : movie.name}
+                    alt={movie.title}
+                    title={movie.title}
                     src={
                       movie.poster_path
                         ? `https://image.tmdb.org/t/p/w400${movie.poster_path}`
                         : 'no-image'
                     }
                   />
-                  <h4 className={css.movieItem}>
-                    {movie.title ? movie.title : movie.name}
-                  </h4>
+                  <h3>{movie.title}</h3>
                 </li>
               </NavLink>
             ))
