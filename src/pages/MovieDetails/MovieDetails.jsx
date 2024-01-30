@@ -21,9 +21,7 @@ export default function MovieDetails() {
   const location = useLocation();
   const backHomePage = useRef(location.state?.from ?? '/');
 
-  // console.log({ movie });
   useEffect(() => {
-    // console.log('movieId', movieId);
     if (!movieId) return;
     setIsLoading(true);
     fetchMovieDetails(movieId)
@@ -36,8 +34,10 @@ export default function MovieDetails() {
   }, [movieId]);
 
   return (
-    <div>
-      <Link to={backHomePage.current}>Go back</Link>
+    <div className={css.containerMovieDetails}>
+      <Link className={css.linkGoBack} to={backHomePage.current}>
+        Go back
+      </Link>
       {isLoading && <Loader />}
       {!error && (
         <div>
@@ -59,6 +59,11 @@ export default function MovieDetails() {
             <h2>Overview</h2>
             <p>{movieDetails.overview}</p>
             <h2>Genres</h2>
+            <ul>
+              {movieDetails.genres.map(genre => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
           </div>
           <div>
             <div>

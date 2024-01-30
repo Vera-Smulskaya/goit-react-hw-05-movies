@@ -1,0 +1,9 @@
+.containerMovieDetails {
+  margin: 40px;
+}
+
+.linkGoBack {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 30px;
+}

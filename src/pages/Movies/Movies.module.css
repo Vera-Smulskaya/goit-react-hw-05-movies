@@ -1,0 +1,17 @@
+.formContainer {
+  margin: 40px;
+}
+
+.formInput {
+  padding: 14px;
+  width: 360px;
+}
+
+.formInput::placeholder {
+  font-size: 22px;
+}
+
+.formButton {
+  padding: 14px;
+  background-color: rgb(128, 144, 160);
+}

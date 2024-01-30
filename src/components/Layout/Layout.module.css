@@ -1,7 +1,7 @@
 .navLink {
   text-decoration: none;
-  color: rgb(110, 110, 110);
-  font-size: 24px;
+  color: rgb(246, 242, 242);
+  font-size: 28px;
   font-weight: 600;
   padding: 20px;
   margin-right: 25px;
@@ -11,5 +11,9 @@
 
 .navLink:active,
 .navLink:focus {
-  color: rgb(0, 0, 0);
+  color: rgb(128, 144, 160);
+}
+
+.headerLayout {
+  margin: 24px;
 }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MoviesList/MoviesList';
+import css from './Movies.module.css';
 
 const KEY = '7e63573e5f6a11223e01d9dfd6333e93';
 
@@ -13,7 +14,6 @@ export default function Movies() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const queryValue = searchParams.get('query');
-  console.log('queryValue', queryValue);
 
   const onFormSubmit = event => {
     event.preventDefault();
@@ -47,17 +47,20 @@ export default function Movies() {
   }, [queryValue, setSearchParams]);
 
   return (
-    <div>
+    <div className={css.formContainer}>
       <form onSubmit={onFormSubmit}>
         <label>
           <input
             type="text"
             name="searchKey"
+            className={css.formInput}
             required
             placeholder="what movie are you looking for?"
           />
         </label>
-        <button type="submit">Search</button>
+        <button className={css.formButton} type="submit">
+          Search
+        </button>
       </form>
 
       {isLoading && <Loader />}
