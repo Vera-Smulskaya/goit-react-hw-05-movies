@@ -26,7 +26,6 @@ export default function MovieDetails() {
     setIsLoading(true);
     fetchMovieDetails(movieId)
       .then(data => {
-        console.log('data', data);
         setMovieDetails(data);
       })
       .catch(setError)
@@ -34,44 +33,58 @@ export default function MovieDetails() {
   }, [movieId]);
 
   return (
-    <div className={css.containerMovieDetails}>
+    <div className={css.containerPageMovieDetails}>
       <Link className={css.linkGoBack} to={backHomePage.current}>
         Go back
       </Link>
       {isLoading && <Loader />}
       {!error && (
         <div>
-          <img
-            width={300}
-            alt={movieDetails.title ? movieDetails.title : movieDetails.name}
-            title={movieDetails.title ? movieDetails.title : movieDetails.name}
-            src={
-              movieDetails.poster_path
-                ? `https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`
-                : 'No poster found'
-            }
-          />
-          <div>
-            <h1>
-              {movieDetails.title ? movieDetails.title : movieDetails.name}
-            </h1>
-            <p>User Score: {Math.round(movieDetails.vote_average * 10)}%</p>
-            <h2>Overview</h2>
-            <p>{movieDetails.overview}</p>
-            <h2>Genres</h2>
-            <ul>
-              {movieDetails.genres.map(genre => (
-                <li key={genre.id}>{genre.name}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <div>
-              <NavLink to="cast">Cast</NavLink>
-              <NavLink to="reviews">Reviews</NavLink>
+          <div className={css.containerMovieDetails}>
+            <img
+              width={300}
+              height={450}
+              alt={movieDetails.title ? movieDetails.title : movieDetails.name}
+              title={
+                movieDetails.title ? movieDetails.title : movieDetails.name
+              }
+              src={
+                movieDetails.poster_path
+                  ? `https://image.tmdb.org/t/p/w300${movieDetails.poster_path}`
+                  : 'No poster found'
+              }
+            />
+            <div className={css.containerInfoMovieDetails}>
+              <h1 className={css.titleMovieDetails}>
+                {movieDetails.title ? movieDetails.title : movieDetails.name}
+              </h1>
+              <p className={css.textMovieDetails}>
+                User Score: {Math.round(movieDetails.vote_average * 10)}%
+              </p>
+              <h2 className={css.subtitleMovieDetails}>Overview:</h2>
+              <p className={css.textMovieDetails}>{movieDetails.overview}</p>
+              <h2 className={css.subtitleMovieDetails}>Genres:</h2>
+              <ul className={css.listMovieDetailsGenres}>
+                {movieDetails &&
+                  movieDetails.genres.map(genre => (
+                    <li className={css.textMovieDetails} key={genre.id}>
+                      {genre.name}
+                    </li>
+                  ))}
+              </ul>
             </div>
           </div>
-          <div className={css.cast}>
+          <div>
+            <div className={css.blockCastReviews}>
+              <NavLink className={css.linkCastReviews} to="cast">
+                Cast
+              </NavLink>
+              <NavLink className={css.linkCastReviews} to="reviews">
+                Reviews
+              </NavLink>
+            </div>
+          </div>
+          <div>
             <Suspense fallback={<Loader />}>
               <Routes>
                 <Route path="cast" element={<MovieCast />} />

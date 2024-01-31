@@ -1,4 +1,4 @@
-.containerMovieDetails {
+.containerPageMovieDetails {
   margin: 40px;
 }
 
@@ -6,4 +6,43 @@
   display: block;
   font-size: 24px;
   margin-bottom: 30px;
+}
+
+.containerMovieDetails {
+  display: flex;
+}
+
+.containerInfoMovieDetails {
+  margin-left: 40px;
+}
+
+.titleMovieDetails {
+  font-size: 50px;
+  color: rgb(249, 242, 51);
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.textMovieDetails {
+  font-size: 24px;
+}
+
+.listMovieDetailsGenres {
+  padding-left: 0;
+}
+
+.subtitleMovieDetails {
+  font-size: 30px;
+  color: rgb(249, 242, 51);
+}
+
+.blockCastReviews {
+  margin: 40px 40px;
+}
+
+.linkCastReviews {
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: 40px;
+  color: rgb(249, 242, 51);
 }

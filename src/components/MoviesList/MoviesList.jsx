@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import noImage from '../../images/noImage.png';
 
 import css from './MoviesList.module.css';
 
@@ -18,13 +19,15 @@ export default function MovieList({ movies }) {
               >
                 <li key={movie.id}>
                   <img
+                    width={400}
+                    height={520}
                     className={css.movieImage}
                     alt={movie.title}
                     title={movie.title}
                     src={
                       movie.poster_path
                         ? `https://image.tmdb.org/t/p/w400${movie.poster_path}`
-                        : 'no-image'
+                        : noImage
                     }
                   />
                 </li>

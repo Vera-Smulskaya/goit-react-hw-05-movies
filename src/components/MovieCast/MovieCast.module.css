@@ -1,0 +1,13 @@
+.listCast {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.textCast {
+  font-size: 20px;
+}
+
+.blockTextCast {
+  max-width: 200px;
+}
