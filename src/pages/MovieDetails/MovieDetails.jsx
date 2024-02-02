@@ -5,6 +5,7 @@ import {
   Route,
   Routes,
   useLocation,
+  useNavigate,
   useParams,
 } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
@@ -20,6 +21,7 @@ export default function MovieDetails() {
   const [error, setError] = useState(null);
   const location = useLocation();
   const backHomePage = useRef(location.state?.from ?? '/');
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!movieId) return;
@@ -28,7 +30,10 @@ export default function MovieDetails() {
       .then(data => {
         setMovieDetails(data);
       })
-      .catch(setError)
+      .catch(error => {
+        navigate('/404');
+        setError(error);
+      })
       .finally(setIsLoading(false));
   }, [movieId]);
 

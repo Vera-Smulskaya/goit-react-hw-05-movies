@@ -19,10 +19,11 @@ export const fetchMoviesTrending = async () => {
 };
 
 export const fetchMovieDetails = async movieId => {
-  const { data } = await axios.get(
+  const query = await axios.get(
     `${baseUrl}movie/${movieId}?api_key=${KEY}&language=en-US`,
     options
   );
+  const { data } = query;
 
   return data;
 };
@@ -43,4 +44,12 @@ export const fetchMovieReviews = async movieId => {
   );
 
   return data.results;
+};
+
+export const fetchSearchedMovie = async queryValue => {
+  const { data } = await axios.get(
+    `${baseUrl}search/movie?api_key=${KEY}&query=${queryValue}&include_adult=false&language=en-US`,
+    options
+  );
+  return data;
 };

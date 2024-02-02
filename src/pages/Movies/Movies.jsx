@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
 import Notiflix from 'notiflix';
 import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MoviesList/MoviesList';
+import { fetchSearchedMovie } from 'services/api';
 import css from './Movies.module.css';
-
-const KEY = '7e63573e5f6a11223e01d9dfd6333e93';
 
 export default function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,12 +21,9 @@ export default function Movies() {
 
   useEffect(() => {
     if (!queryValue) return;
-    const fetchSearchedMovie = async () => {
-      try {
-        setIsLoading(true);
-        const { data } = await axios.get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=${queryValue}&include_adult=false&language=en-US`
-        );
+    setIsLoading(true);
+    fetchSearchedMovie(queryValue)
+      .then(data => {
         setSearchedMovie(data.results);
         if (data.results.length === 0) {
           setSearchParams();
@@ -37,12 +32,12 @@ export default function Movies() {
           Notiflix.Notify.failure('There are no films. Please try again.');
           return;
         }
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+        return setSearchedMovie(data.results);
+      })
+      .catch(error => {
+        setError(error);
+      })
+      .finally(setIsLoading(false));
     fetchSearchedMovie();
   }, [queryValue, setSearchParams]);
 

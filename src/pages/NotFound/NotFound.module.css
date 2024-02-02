@@ -1,0 +1,11 @@
+.titleNotFound {
+  color: red;
+  font-size: 56px;
+  text-align: center;
+}
+
+.textNotFound {
+  color: white;
+  font-size: 36px;
+  text-align: center;
+}
