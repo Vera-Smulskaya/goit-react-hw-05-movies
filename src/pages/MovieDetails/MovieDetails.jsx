@@ -35,7 +35,7 @@ export default function MovieDetails() {
         setError(error);
       })
       .finally(setIsLoading(false));
-  }, [movieId]);
+  }, [movieId, navigate]);
 
   return (
     <div className={css.containerPageMovieDetails}>
